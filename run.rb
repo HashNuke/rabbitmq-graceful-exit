@@ -8,7 +8,7 @@ child_pids = 3.times.map do
       puts "[#{Process.pid}] Got USR1"
       # worker = Worker.instance
       worker = @worker
-      puts "#[#{Process.pid}]: #{worker.object_id}; #{worker.exit!}; #{worker.graceful_exit}"
+      puts "#[#{Process.pid}]: #{worker.object_id}; #{worker.graceful_exit!}"
     }
     
     puts "[#{Process.pid}] Instance #{@worker.object_id}"
