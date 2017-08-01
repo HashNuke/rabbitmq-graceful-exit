@@ -17,7 +17,7 @@ class Worker
 
   def subscribe
     while true
-      if exit?
+      if graceful_exit?
         puts "[#{Process.pid}] gracefully exiting..."
         rabbit.q.channel.close
         rabbit.conn.close
@@ -31,12 +31,12 @@ class Worker
   end
 
 
-  def exit!
+  def graceful_exit!
     @graceful_exit = true
   end
 
 
-  def exit?
+  def graceful_exit?
     @graceful_exit
   end
 end
